@@ -1,0 +1,45 @@
+class DictTable(dict):
+    # Overridden dict class which takes a dict in the form {'a': 2, 'b': 3},
+    # and renders an HTML Table in IPython Notebook.
+    def _repr_html_(self):
+        html = ["<table width=100%>"]
+        for key, value in self.iteritems():
+            html.append("<tr>")
+            html.append("<td>{0}</td>".format(key))
+            html.append("<td>{0}</td>".format(value))
+            html.append("</tr>")
+        html.append("</table>")
+        return ''.join(html)
+d = {'a': 2, 'b': 3, 'c': "safdasfsd"}
+DictTable(d)
+
+
+
+ KROK 1: Podziel tablicę (m przykładów) na n podtablic.
+Jedna dla każdej możliwej wartości atrybutu klasy
+Kroki 2-8 są powtarzane dla każdej podtablicy
+ KROK 2: Zainicjalizuj liczbę kombinacji atrybutów j jako j=1.
+ KROK 3: Dla rozważanej podtablicy, podziel listę atrybutów
+na odmienne kombinacje, każda kombinacja z j odmiennymi
+atrybutami.
+ KROK 4: Dla każdej kombinacji atrybutów, zlicz liczbę
+wystąpień wartości atrybutu, które pojawiają się pod tą samą
+kombinacją atrybutów w niezaznaczonych wierszach
+rozważanej podtablicy, ale które w tym samym czasie nie
+pojawiają się pod tą samą kombinacją atrybutów w innych
+podtablicach. Nazwij pierwszą kombinację z maksymalną
+liczbą wystąpień jako KOMBINACJA_MAKSYMALNA.
+ KROK 5: Jeśli KOMBINACJA_MAKSYMALNA=0, zwiększ j o
+1 i przejdź do kroku 3. 41
+Algorytm ILA, cd.
+ KROK 6: Zaznacz jako sklasyfikowane wszystkie wiersze
+rozważanej podtablicy, w których pojawiają się wartości
+KOMBINACJA_MAKSYMALNA.
+ KROK 7: Dodaj regułę do R, której lewa strona zawiera
+nazwy atrybutów z KOMBINACJA_MAKSYMALNA, z jej
+wartościami oddzielonymi separatorem AND i prawą stroną
+zawierającą wartość atrybutu decyzyjnego związanego z
+podtablicą.
+ KROK 8: Jeśli wszystkie wiersze są zaznaczone jako
+sklasyfikowane, wtedy przejdź do przetwarzania kolejnej
+podtablicy (idź do kroku 2).
