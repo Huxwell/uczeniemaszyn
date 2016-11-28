@@ -51,7 +51,6 @@ def fit_cv(datapath,dirpath):
 
     results = {}
     for name in names:
-        print name
         with open(dirpath+name,"rb") as f:
             data = pickle.load(f)
             # print name
@@ -74,12 +73,12 @@ dirpath = '../../data/processed/'
 # datapath = 'iris_discretized_no_rows_'
 # fit_cv(datapath,dirpath)
 
-datapath = 'wine_discretized_equal_'
-fit_cv(datapath,dirpath)
+# datapath = 'wine_discretized_no_rows_'
+# fit_cv(datapath,dirpath)
 # datapath = 'wine_discretized_no_rows_'
 # fit_cv(datapath,dirpath)
 
 # datapath = 'pima-indians-diabetes_discretized_no_rows_'
 # fit_cv(datapath,dirpath)
-# datapath = 'pima-indians-diabetes_discretized_equal_'
-# fit_cv(datapath,dirpath)
+datapath = 'pima-indians-diabetes_discretized_equal_'
+fit_cv(datapath,dirpath)
